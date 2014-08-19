@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="app">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+		<title>My Bookkeeper</title>
+
+		<script src="vendor/jquery-2.1.1.min.js"></script>
+		<script src="vendor/jquery-ui-1.10.4.custom.min.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+		<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+		<!--FONT AWESOME--> 
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<script src="vendor/angular.js"></script>
+		<script src="vendor/angular-route.js"></script>
+		<script src="vendor/angular-cookies.js"></script>
+
+		<script src="app/app.js"></script>
+
+		<script src="app/controllers/controllers.js"></script>
+
+		<script src="app/services/services.js"></script>
+
+		<script src="app/directives/directives.js"></script>
+
+		<script src="app/filters/filters.js"></script>
+
+		<link href="css/main.mybookkeeper.css" rel="stylesheet" type="text/css" />
+
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="apple-touch-icon" href="images/apple_icon.png"/>
+		<script>
+			$().ready(function(){
+				$('#left-panel').panel('open');
+			})
+		</script>
+	</head>
+	<body>
+
+		<!--PANNEL-->
+		
+		<div data-role="panel" id="left-panel" data-position="left" data-display="overlay"> 
+			<menu></menu>
+		</div>
+		
+		<div id="all-wrapper">
+
+			<div id="header">
+				<table>
+					<tr>
+						<td>
+							<a href="#left-panel"><i class="fa fa-bars fa-big" ></i></a>
+						</td>
+						<td>
+							<h3>My Bookkeeper</h3>
+						</td>
+						<td>
+							<a href="" onclick="return false;"><i class="fa fa-user fa-big"></i></a>
+						</td>
+					</tr>
+				</table>
+
+			</div>
+
+			<div id="content">
+				
+				<div ng-view>
+
+				</div>
+				
+			</div>
+
+			<div id="footer">
+				footer
+			</div>
+
+		</div>
+
+
+		<!--		<div data-role="page" id="pageone">
+		
+					<div data-role="panel" id="left-panel" data-position="left" data-display="overlay"> 
+		
+					</div> 
+		
+					<div id="frontpage">
+		
+						<div ng-view>
+		
+						</div>
+		
+		
+					</div>
+		
+					<div data-role="panel" id="right-panel" data-position="right" data-display="overlay">
+						
+					</div>
+		
+				</div> -->
+
+	</body>
+</html>
