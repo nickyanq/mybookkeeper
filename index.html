@@ -35,9 +35,9 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="apple-touch-icon" href="images/apple_icon.png"/>
 		<script>
-			$().ready(function(){
-				$('#left-panel').panel('open');
-			})
+//			$().ready(function(){
+//				$('#left-panel').panel('open');
+//			})
 		</script>
 	</head>
 	<body>
@@ -56,7 +56,7 @@
 						<td>
 							<a href="#left-panel"><i class="fa fa-bars fa-big" ></i></a>
 						</td>
-						<td>
+						<td ng-click="redirect('/')">
 							<h3>My Bookkeeper</h3>
 						</td>
 						<td>

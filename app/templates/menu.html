@@ -1,20 +1,30 @@
 <ul>
 	<li>
 		<div style="">
-			<span>My account</span>
+			<i class="fa fa-bank fa-big"></i><span class="p-left-10">My account</span>
 		</div>
-		
+
 	</li>
-	
+	<h3 style="" class="gn-between">
+		<span style="font-size: 10px;text-transform: uppercase;font-family: Helvetica, sans-serif;">Account information</span>
+	</h3>
+<!--	<li>
+		<i class="fa fa-arrow-down"></i><span class="p-left-10">Expenses</span>
+	</li>
+
 	<li>
-		<span>Expenses</span>
+		<i class="fa fa-arrow-up"></i><span class="p-left-10">Incomes</span>
 	</li>
-	
+
 	<li>
-		<span>Incomes</span>
-	</li>
+		<i class="fa fa-credit-card"></i><span class="p-left-10">Overall</span>
+	</li>-->
 	
-	<li>
-		<span>Something</span>
+	<li ng-click="redirect('login')">
+		<i class="fa fa-tag"></i><span class="p-left-10">Login</span>
 	</li>
+	<li ng-click="redirect('register')">
+		<i class="fa fa-users"></i><span class="p-left-10">Register</span>
+	</li>
+
 </ul>
