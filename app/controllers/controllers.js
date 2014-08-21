@@ -38,7 +38,7 @@ app.controller(
 					firstname : '',
 					lastname : '',
 					password : '',
-					confirm_password : ''
+					passwordConfirm : ''
 				}
 				
 				$scope.register = function(){
