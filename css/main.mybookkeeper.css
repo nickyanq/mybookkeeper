@@ -111,6 +111,7 @@ body{
 }
 
 #content{
+	overflow-y: scroll;
 	height: 80%;
 	padding: 10px;
 }
@@ -120,3 +121,138 @@ body{
 	height: 10% ;line-height: 10vh;
 	border-top: 1px solid lightgray;
 }
+
+#footer >table{
+	height: 100%;
+	width: 100%;
+	font-size: 11px;
+	text-align: center;
+	/*background: darkkhaki;*/
+}
+#footer > table td:last-child{
+	border: 0;
+}
+#footer > table td{
+	width: 33.33%;
+	border-right: 1px solid lightgrey;
+	vertical-align: top;
+	text-shadow: .6px 0px #CCC;
+	/*background: red;*/
+}
+
+#view-holder{
+	height: 100%;
+}
+
+#login-wrapper{
+	width: 100%;
+	height: 100%;
+}
+
+#register-wrapper{
+	margin-bottom: 15px;
+	width: 100%;
+	height: 100%;
+}
+
+#login-ctr > div{
+	/*height: 40%;*/
+	padding: 15px;
+	border-radius: 7px;
+	-webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow:    0px 0px 4px 1px rgba(0, 0, 0, 0.3);
+	box-shadow:         0px 0px 4px 1px rgba(0, 0, 0, 0.3);
+}
+#register-ctr > div{
+	/*height: 40%;*/
+	padding: 15px;
+	border-radius: 7px;
+	-webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow:    0px 0px 4px 1px rgba(0, 0, 0, 0.3);
+	box-shadow:         0px 0px 4px 1px rgba(0, 0, 0, 0.3);
+}
+
+#login-ctr > div > input[type=text]{
+	width: calc(100%);padding:0;border-width:1px;box-sizing: border-box;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding: 5px;
+	border-radius: 3px;
+}
+#login-ctr > div > input[type=password]{
+	width: calc(100%);padding:0;border-width:1px;box-sizing: border-box;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding: 5px;
+	border-radius: 3px;
+}
+
+#login-ctr > div > input[type=submit]{
+	padding: 7px;
+	padding-left: 22px;
+	padding-right: 22px;
+	width: 100%;
+}
+
+#login-ctr > div > p.error{
+	margin-top: 10px;
+}
+#register-ctr > div > p.error{
+	margin-top: 10px;
+}
+
+
+#register-ctr > div > form > input[type=text]{
+	width: calc(100%);padding:0;border-width:1px;box-sizing: border-box;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding: 5px;
+	border-radius: 3px;
+}
+#register-ctr > div > form > input[type=password]{
+	width: calc(100%);padding:0;border-width:1px;box-sizing: border-box;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding: 5px;
+	border-radius: 3px;
+}
+
+#register-ctr > div > form > input[type=submit]{
+	padding: 7px;
+	padding-left: 22px;
+	padding-right: 22px;
+	width: 100%;
+	margin-top: 5px;
+	color : black;
+	font-weight: bold;
+	/*text-transform: uppercase;*/
+	font-style: initial;
+}
+
+#register-ctr > div > form > span.alert-danger{
+	font-size: 11px;
+	font-style: italic;
+	color : #F94C4C;
+}
+
+#register-ctr > div > form > input[type=email]{
+	width: calc(100%);padding:0;border-width:1px;box-sizing: border-box;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding: 5px;
+	border-radius: 3px;
+}
+
+#register-ctr > div > form > select{
+	width: 100%;
+	padding: 5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.error{
+	color: red;
+	font-style: italic;
+	font-size: 13px;
+}
+

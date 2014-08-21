@@ -14,3 +14,36 @@ app.controller(
 				console.log('home controller');
 			}
 		]);
+		
+app.controller(
+		'loginController',
+		['$scope', '$rootScope',
+			function($scope, $rootScope) {
+				
+				$scope.user = {
+					email : 'corneliu.iancu27@gmail.com',
+					password : ''
+				}
+				
+				console.log('home controller');
+			}
+		]);
+app.controller(
+		'registerController',
+		['$scope', '$rootScope',
+			function($scope, $rootScope) {
+				
+				$scope.user = {
+					email : '',
+					firstname : '',
+					lastname : '',
+					password : '',
+					confirm_password : ''
+				}
+				
+				$scope.register = function(){
+					console.log('Ready to submit.');
+					console.log($scope.user);
+				}
+			}
+		]);
