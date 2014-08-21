@@ -15,19 +15,59 @@ app.config(function($routeProvider, $locationProvider, $provide, $httpProvider) 
 			.when('/', {
 				templateUrl: 'app/views/home.html',
 				controller: 'homeController',
+				requireLogin: true,
+				forbidLogged: false,
 				resolve: {
+					auth: function(userService) {
+						return userService.authUser();
+					}
 				}
 			})
 			.when('/register', {
 				templateUrl: 'app/views/register.html',
 				controller: 'registerController',
+				requireLogin: false,
+				forbidLogged: true,
 				resolve: {
+					auth: function(userService) {
+						return userService.authUser();
+					}
 				}
 			})
 			.when('/login', {
 				templateUrl: 'app/views/login.html',
 				controller: 'loginController',
+				requireLogin: false,
+				forbidLogged: true,
 				resolve: {
+					auth: function(userService) {
+						return userService.authUser();
+					}
+				}
+			})
+			.when('/profile', {
+				templateUrl: 'app/views/login.html',
+				controller: 'profileController',
+				requireLogin: true,
+				forbidLogged: false,
+				resolve: {
+					auth: function(userService) {
+						return userService.authUser();
+					}
+				}
+			})
+			.when('/logout', {
+				requireLogin: true,
+				forbidLogged: false,
+				resolve: {
+					logout: function(userService) {
+						userService.logout();
+						console.log('logging out...');
+						return true;
+					},
+					auth: function(userService) {
+						return userService.authUser();
+					}
 				}
 			})
 
@@ -45,11 +85,11 @@ app.config(function($routeProvider, $locationProvider, $provide, $httpProvider) 
  *  - on route change success it hides the loading screen (via loadingView)
  *	- on route change error it displays a message in the console.
  */
-app.run(['$rootScope', '$templateCache', '$location', '$q', '$timeout', 'notificationService',
-	function($rootScope, $templateCache, $location, $q, $timeout, notificationService) {
-		
+app.run(['$rootScope', '$templateCache', '$location', '$q', '$timeout', 'notificationService', 'userService',
+	function($rootScope, $templateCache, $location, $q, $timeout, notificationService, userService) {
+
 		$rootScope.notificationService = notificationService;
-		
+
 		$rootScope.$on('$viewContentLoaded', function() {
 			$templateCache.removeAll();
 		});
@@ -63,21 +103,38 @@ app.run(['$rootScope', '$templateCache', '$location', '$q', '$timeout', 'notific
 			if (curr.$$route && curr.$$route.resolve) {
 				// Show a loading message until promises are resolved
 				$rootScope.loadingView = true;
-				console.log('Start changeing route');
+//				console.log('Start changeing route');
 			}
 		});
 		$rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
 			// Hide loading message
 			$rootScope.loadingView = false;
 			$('#left-panel').panel("close");
-			console.log('Route changed successfully.');
+			//checking if the user is allowed.
+			if (curr.$$route.requireLogin === true) {
+				if (userService.currentUser.logged === false) {
+					$location.path('/login');
+					e.preventDefault();
+				}
+			} else {
+				if (curr.$$route.forbidLogged) {
+					if (userService.currentUser.logged === true) {
+						$location.path('/');
+						e.preventDefault();
+					}
+				}
+			}
+
+
+//			console.log('Route changed successfully.');
 		});
 		$rootScope.$on("$routeChangeError", function(e, curr, prev, rejection) {
 			console.log("ROUTE CHANGE ERROR: " + rejection);
 		});
 
 		$rootScope.redirect = function(url) {
+			alert('redirect');
 			$location.path(url);
-		}
+		};
 
 	}]);

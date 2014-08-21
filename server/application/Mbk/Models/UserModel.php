@@ -23,8 +23,26 @@ class UserModel extends AbstractModel {
 		$this->em->persist($usr);
 
 		$this->em->flush();
-		
+
 		return array('code' => 202, 'message' => 'Successfull registration');
+	}
+
+	public function loginUser($user, $encrypt) {
+
+		$_user = $this->em->getRepository('Entities:User')->findBy(array('email' => $user->email));
+
+		if ($_user) {
+			//check password
+			if ($encrypt->decode($_user[0]->getPassword()) == $user->password) {
+				return array('code' => 1, 'message' => 'Successfull login.', 'user' => $_user[0]->getIterationArray());
+			} else {
+				return array('code' => 2, 'message' => 'Password did not matched');
+			}
+		} else {
+			return array('code' => 404, 'message' => 'User was not found');
+		}
+
+		die('loggin in..');
 	}
 
 }

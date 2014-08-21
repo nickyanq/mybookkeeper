@@ -1,28 +1,28 @@
-app.directive('menu', [function() {
+app.directive('menu', ['userService', function(userService) {
 		return {
 			restrict: 'E',
 			templateUrl: 'app/templates/menu.html',
-//			scope: {},
+			scope: {},
 			link: function(scope, element, attrs) {
-				scope.name = 'something';
+				scope.userService = userService;
 			}
 
 		};
 	}]);
 
-app.directive('match', function() {
-	return {
-		require: 'ngModel',
-		restrict: 'A',
-		scope: {
-			match: '='
-		},
-		link: function(scope, elem, attrs, ctrl) {
-			scope.$watch(function() {
-				return (ctrl.$pristine && angular.isUndefined(ctrl.$modelValue)) || scope.match === ctrl.$modelValue;
-			}, function(currentValue) {
-				ctrl.$setValidity('match', currentValue);
-			});
-		}
-	};
-});
+app.directive('match', [function() {
+		return {
+			require: 'ngModel',
+			restrict: 'A',
+			scope: {
+				match: '='
+			},
+			link: function(scope, elem, attrs, ctrl) {
+				scope.$watch(function() {
+					return (ctrl.$pristine && angular.isUndefined(ctrl.$modelValue)) || scope.match === ctrl.$modelValue;
+				}, function(currentValue) {
+					ctrl.$setValidity('match', currentValue);
+				});
+			}
+		};
+	}]);

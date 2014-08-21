@@ -9,9 +9,9 @@
  */
 app.controller(
 		'homeController',
-		['$scope', '$rootScope',
-			function($scope, $rootScope) {
-				console.log('home controller');
+		['$scope', '$rootScope','userService',
+			function($scope, $rootScope,userService) {
+//				console.log('home controller');
 
 
 
@@ -20,15 +20,53 @@ app.controller(
 
 app.controller(
 		'loginController',
-		['$scope', '$rootScope',
-			function($scope, $rootScope) {
+		['$scope', '$rootScope', 'apiService','$timeout',
+			function($scope, $rootScope, apiService,$timeout) {
 
 				$scope.user = {
-					email: 'corneliu.iancu27@gmail.com',
+					email: '',
 					password: ''
 				};
 
-				console.log('home controller');
+				var resetUser = function() {
+					$scope.user = {
+						email: '',
+						password: ''
+					};
+				};
+
+				$scope.login = function() {
+					apiService.login($scope.user).then(function(result) {
+						switch (result.data.code) {
+							case 404 :
+								{
+									$scope.user.email = '';
+									$scope.user.password = '';
+									$rootScope.notificationService.notification('User not found.', 'error');
+								}
+								break;
+							case 2 :
+								{
+									$scope.user.password = '';
+									$rootScope.notificationService.notification('Password did not matched.', 'error');
+								}
+								break;
+							case 1 :
+								{
+									$rootScope.notificationService.notification('Successfull login.', 'success');
+									$timeout(function(){$rootScope.redirect('/');},2000)
+									
+								}
+								break;
+							default :
+								{
+									resetUser();
+									$rootScope.notificationService.notification('Login failed.', 'error');
+								}
+								break;
+						}
+					});
+				};
 			}
 		]);
 app.controller(
@@ -59,24 +97,22 @@ app.controller(
 				$scope.register = function() {
 //					console.log('Ready to submit.');
 					apiService.register($scope.user).then(function(result) {
-						console.log(result);
 						switch (result.data.code) {
 
 							case 202 :
 								{
-									console.log('Registration ok');
 									$rootScope.redirect('login');
 									$rootScope.notificationService.notification('Successfull registration.', 'success');
 								}
 								break;
 							case 201 :
 								{
-									console.log('Email already in use');
+									$rootScope.notificationService.notification('Email already in use.', 'error');
 								}
 								break;
 							default :
 								{
-									console.log('Could not register.');
+									$rootScope.notificationService.notification('Could not register.', 'error');
 								}
 								break;
 

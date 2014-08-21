@@ -1,17 +1,23 @@
-<table id="login-wrapper">
+<table id="register-wrapper">
 	<tr>
-		<td id="login-ctr">
-			<div>
-				<h2>Login</h2>
-				<input type="text" name="email" placeholder="Email">
-				<input type="password" name="password" placeholder="Password">
-				
-				<!--<input type="checkbox" name="remember"><span>Remember me</span>-->
-				
-				<input type="submit" value="Login">
-				
-				<p class="error font-12">There was an error.</p>
-				
+		<td id="register-ctr">
+			<div>	
+				<h1 style="text-align: center;">Login - My Bookkeeper</h1>
+				<form name="regform">
+
+					<input type="email" name="email" ng-model="user.email" placeholder="Email" required>
+					<span class="alert-danger" ng-show="regform.email.$error.email">This is not valid email!</span>
+					<span class="alert-danger" ng-show="regform.email.$error.required">This field is required.</span>
+
+					<input ng-model="user.password" type="password" name="password" data-ng-class="{'ng-invalid':regform.confirmPassword.$error.match}" placeholder="Password" required="" />
+					<span class="alert-danger" ng-show="regform.password.$error.required">This field is required.</span>
+					<!--<span class="alert-danger" ng-show="regform.password.$error.minlength">Minimum length is 6.</span>-->
+
+
+					<input type="submit" value="Login" ng-disabled="regform.$invalid" ng-click="login()">
+				</form>
+				<p ng-show="false" class="error font-12">There was an error.</p>
+
 			</div>
 		</td>
 	</tr>

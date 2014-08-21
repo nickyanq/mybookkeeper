@@ -20,11 +20,27 @@
 		<i class="fa fa-credit-card"></i><span class="p-left-10">Overall</span>
 	</li>-->
 	
-	<li ng-click="redirect('login')">
+	<li ng-click="redirect('login')" ng-show="!userService.currentUser.logged">
 		<i class="fa fa-tag"></i><span class="p-left-10">Login</span>
 	</li>
-	<li ng-click="redirect('register')">
+	<li ng-click="redirect('register')" ng-show="!userService.currentUser.logged">
 		<i class="fa fa-users"></i><span class="p-left-10">Register</span>
+	</li>
+	
+	<li ng-click="redirect('profile')" ng-show="userService.currentUser.logged">
+		<i class="fa fa-users"></i><span class="p-left-10">Profile</span>
+	</li>
+	<li ng-click="redirect('profile')" ng-show="userService.currentUser.logged">
+		<i class="fa fa-users"></i><span class="p-left-10">Accounts</span>
+	</li>
+	<li ng-click="redirect('profile')" ng-show="userService.currentUser.logged">
+		<i class="fa fa-users"></i><span class="p-left-10">Expenses</span>
+	</li>
+	<li ng-click="redirect('profile')" ng-show="userService.currentUser.logged">
+		<i class="fa fa-users"></i><span class="p-left-10">Incomes</span>
+	</li>
+	<li ng-click="redirect('profile')" ng-show="userService.currentUser.logged">
+		<i class="fa fa-users"></i><span class="p-left-10">Logout</span>
 	</li>
 
 </ul>
