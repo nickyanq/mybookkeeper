@@ -45,8 +45,11 @@ app.config(function($routeProvider, $locationProvider, $provide, $httpProvider) 
  *  - on route change success it hides the loading screen (via loadingView)
  *	- on route change error it displays a message in the console.
  */
-app.run(['$rootScope', '$templateCache', '$location', '$q', '$timeout',
-	function($rootScope, $templateCache, $location, $q, $timeout) {
+app.run(['$rootScope', '$templateCache', '$location', '$q', '$timeout', 'notificationService',
+	function($rootScope, $templateCache, $location, $q, $timeout, notificationService) {
+		
+		$rootScope.notificationService = notificationService;
+		
 		$rootScope.$on('$viewContentLoaded', function() {
 			$templateCache.removeAll();
 		});

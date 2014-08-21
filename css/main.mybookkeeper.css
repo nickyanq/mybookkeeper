@@ -52,7 +52,7 @@ html,body{
 }
 
 body{
-
+	font-family: 'PT Sans Narrow', sans-serif;
 }
 
 #left-panel{
@@ -84,6 +84,38 @@ body{
 
 }
 
+#notificatin-holder{
+	position: relative;
+	height: 50px;
+	width: 100%;
+	border-bottom: 1px solid lightgray;
+	line-height: 50px;
+	text-align: center;
+	font-size: 18px;
+	color : #32394a;
+	text-shadow: .4px .6px #7a8292;
+	background: rgba(255,255,255,0.5);
+	display: none;
+}
+
+#notificatin-holder.notification-success{
+	
+	background: rgb(169,219,128); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(169,219,128,1) 0%, rgba(150,197,111,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(169,219,128,1)), color-stop(100%,rgba(150,197,111,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(169,219,128,1) 0%,rgba(150,197,111,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9db80', endColorstr='#96c56f',GradientType=0 ); /* IE6-9 */
+}
+#notificatin-holder.notification-error{
+	background: pink;
+}
+#notificatin-holder.notification-notice{
+	
+}
+
 #left-panel ul > li:first-child{
 	background: #31394a;
 	position: relative;
@@ -99,9 +131,11 @@ body{
 }
 
 #header{
-	height: 10% ;line-height: 10vh;
+	height: 10vh ;line-height: 10vh;
 	box-shadow: 1px 3px 4px 0 rgba(0,0,0,0.15);
 	border-bottom: 1px solid lightgray;
+	position: relative;
+	z-index: 2;
 }
 
 #header > table{
@@ -112,13 +146,13 @@ body{
 
 #content{
 	overflow-y: scroll;
-	height: 80%;
-	padding: 10px;
+	height: 79vh;
+
 }
 
 #footer{
 	box-shadow: 1px -3px 4px 0 rgba(0,0,0,0.15);
-	height: 10% ;line-height: 10vh;
+	height: 10vh ;line-height: 10vh;
 	border-top: 1px solid lightgray;
 }
 
@@ -141,7 +175,8 @@ body{
 }
 
 #view-holder{
-	height: 100%;
+	height: 95%;
+	padding: 10px;
 }
 
 #login-wrapper{
@@ -204,15 +239,15 @@ body{
 
 #register-ctr > div > form > input[type=text]{
 	width: calc(100%);padding:0;border-width:1px;box-sizing: border-box;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	padding: 5px;
 	border-radius: 3px;
 }
 #register-ctr > div > form > input[type=password]{
 	width: calc(100%);padding:0;border-width:1px;box-sizing: border-box;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	padding: 5px;
 	border-radius: 3px;
 }
@@ -237,8 +272,8 @@ body{
 
 #register-ctr > div > form > input[type=email]{
 	width: calc(100%);padding:0;border-width:1px;box-sizing: border-box;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	padding: 5px;
 	border-radius: 3px;
 }
@@ -246,8 +281,8 @@ body{
 #register-ctr > div > form > select{
 	width: 100%;
 	padding: 5px;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 7px;
+	margin-bottom: 7px;
 }
 
 .error{

@@ -9,28 +9,30 @@
 
 					<input type="text" name="lastname" ng-model="user.lastname" placeholder="Last Name" required>
 					<span class="alert-danger" ng-show="regform.lastname.$error.required">Please fill out your last name</span>
-
-					<select name="gender">
-						<option value="Mr">Mr</option>
+					
+					<select ng-model="user.gender" ng-selected="1" ng-options="gender.name as gender.name for gender in genders" required></select>
+<!--					<select name="gender" ng-model="user.gender" required>
+						<option value="Mr" selected="">Mr</option>
 						<option value="Mrs">Mrs</option>
-					</select>
+					</select>-->
 
 					<input type="email" name="email" ng-model="user.email" placeholder="Email" required>
 					<span class="alert-danger" ng-show="regform.email.$error.email">This is not valid email!</span>
 					<span class="alert-danger" ng-show="regform.email.$error.required">This field is required.</span>
-					
-<!--					<input type="password" name="password" ng-model="user.password" data-ng-class="{'ng-invalid':myForm.confirmPassword.$error.match}" placeholder="Password" required="">
-					<span class="alert-danger" ng-show="regform.password.$error.required">This field is required.</span>
-					
-					<input type="password" name="confirm_password" ng-model="user.confirm_password" data-match="user.password" placeholder="Confirm password" required="">
-					<span class="alert-danger" ng-show="regform.confirm_password.$error.required">This field is required.</span>
-					<span class="alert-danger" ng-show="regform.confirm_password.$error.match">Passwords didn't matched.</span>-->
 
-<input ng-model="user.password" type="password" name="password" data-ng-class="{'ng-invalid':regform.confirmPassword.$error.match}" placeholder="Password" required="" />
+					<!--					<input type="password" name="password" ng-model="user.password" data-ng-class="{'ng-invalid':myForm.confirmPassword.$error.match}" placeholder="Password" required="">
+										<span class="alert-danger" ng-show="regform.password.$error.required">This field is required.</span>
+										
+										<input type="password" name="confirm_password" ng-model="user.confirm_password" data-match="user.password" placeholder="Confirm password" required="">
+										<span class="alert-danger" ng-show="regform.confirm_password.$error.required">This field is required.</span>
+										<span class="alert-danger" ng-show="regform.confirm_password.$error.match">Passwords didn't matched.</span>-->
+
+					<input ng-model="user.password" type="password" name="password" data-ng-class="{'ng-invalid':regform.confirmPassword.$error.match}" placeholder="Password" ng-minlength="6" required="" />
 					<span class="alert-danger" ng-show="regform.password.$error.required">This field is required.</span>
-					
+					<span class="alert-danger" ng-show="regform.password.$error.minlength">Minimum length is 6.</span>
+
 					<input ng-model="user.passwordConfirm" type="password" data-match="user.password" name="confirmPassword" placeholder="Confirm password" required="" />
-					
+
 					<span class="alert-danger" data-ng-show="regform.confirmPassword.$error.match">Passwords do not match!</span>
 					<span class="alert-danger" ng-show="regform.confirm_password.$error.required">This field is required.</span>
 
