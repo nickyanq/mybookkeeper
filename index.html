@@ -8,6 +8,15 @@
 
 		<script src="vendor/jquery-2.1.1.min.js"></script>
 		<script src="vendor/jquery-ui-1.10.4.custom.min.js"></script>
+		<script>
+			$(document).bind("mobileinit", function() {
+				$.mobile.ajaxEnabled = false;
+				$.mobile.linkBindingEnabled = false;
+				$.mobile.hashListeningEnabled = false;
+				$.mobile.pushStateEnabled = false;
+			});
+		</script>
+
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
 		<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
 
@@ -43,11 +52,11 @@
 	<body>
 
 		<!--PANNEL-->
-		
+
 		<div data-role="panel" id="left-panel" data-position="left" data-display="overlay"> 
 			<menu></menu>
 		</div>
-		
+
 		<div id="all-wrapper">
 
 			<div id="header">
@@ -68,11 +77,11 @@
 			</div>
 
 			<div id="content">
-				
+
 				<div ng-view>
 
 				</div>
-				
+
 			</div>
 
 			<div id="footer">

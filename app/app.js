@@ -33,7 +33,7 @@ app.config(function($routeProvider, $locationProvider, $provide, $httpProvider) 
 
 			.otherwise({redirectTo: '/'});
 
-	$locationProvider.html5Mode(true);
+//	$locationProvider.html5Mode(true);
 
 
 });
