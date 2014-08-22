@@ -10,6 +10,12 @@
 /*
 	BOOLSHIT
 */
+.h20{height: 20px}
+.h40{height: 40px}
+.h60{height: 60px}
+.h80{height: 80px}
+.h100{height: 100px}
+
 .fa-big{
 	font-size: 24px;
 }
@@ -31,6 +37,12 @@
 }
 .p-left-10{
 	padding-left: 10px;
+}
+
+.padd5{
+	padding: 5px;
+	border: 0;
+	box-shadow: none !important;
 }
 /*
 	END BOOLSHIT
@@ -131,6 +143,16 @@ body{
 	position: relative;
 }
 
+#loadingmask{
+	display: none;
+	height: 100vh;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	background: rgba(0,0,0,.35);
+	z-index: 10
+
+}
 
 #all-wrapper{
 	height: 100vh;
@@ -301,3 +323,39 @@ body{
 	font-size: 13px;
 }
 
+.fp-hler{
+	min-height: 80px;background: white;
+
+	-webkit-box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.6);
+	-moz-box-shadow:    0px 1px 2px 0px rgba(50, 50, 50, 0.6);
+	box-shadow:         0px 1px 2px 0px rgba(50, 50, 50, 0.6);
+	margin-bottom: 15px;
+	position: relative;
+}
+
+.ma-label{
+	text-transform: uppercase;
+	text-shadow: none;
+	position: absolute;
+	top: 0;
+	left: 15px;
+	height: 15px;
+	line-height: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color : white;
+	font-size: 12px;
+	background: rgb(0,129,198); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(0,129,198,1) 0%, rgba(0,129,198,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,129,198,1)), color-stop(100%,rgba(0,129,198,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(0,129,198,1) 0%,rgba(0,129,198,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(0,129,198,1) 0%,rgba(0,129,198,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(0,129,198,1) 0%,rgba(0,129,198,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(0,129,198,1) 0%,rgba(0,129,198,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0081c6', endColorstr='#0081c6',GradientType=0 ); /* IE6-9 */
+
+}
+
+.overall-currency{
+	text-align: center;
+}

@@ -62,8 +62,8 @@ app.config(function($routeProvider, $locationProvider, $provide, $httpProvider) 
 				resolve: {
 					logout: function(userService) {
 						userService.logout();
-						console.log('logging out...');
-						return true;
+//						console.log('logging out...');
+//						return true;
 					},
 					auth: function(userService) {
 						return userService.authUser();
@@ -85,10 +85,11 @@ app.config(function($routeProvider, $locationProvider, $provide, $httpProvider) 
  *  - on route change success it hides the loading screen (via loadingView)
  *	- on route change error it displays a message in the console.
  */
-app.run(['$rootScope', '$templateCache', '$location', '$q', '$timeout', 'notificationService', 'userService',
-	function($rootScope, $templateCache, $location, $q, $timeout, notificationService, userService) {
+app.run(['$rootScope', '$templateCache', '$location', '$q', '$timeout', 'notificationService', 'userService', 'loadingScreenService',
+	function($rootScope, $templateCache, $location, $q, $timeout, notificationService, userService, loadingScreenService) {
 
 		$rootScope.notificationService = notificationService;
+		$rootScope.loadingScreenService = loadingScreenService;
 
 		$rootScope.$on('$viewContentLoaded', function() {
 			$templateCache.removeAll();
@@ -100,6 +101,8 @@ app.run(['$rootScope', '$templateCache', '$location', '$q', '$timeout', 'notific
 		}
 
 		$rootScope.$on('$routeChangeStart', function(e, curr, prev) {
+			loadingScreenService.showLoading('mainscreen');
+			
 			if (curr.$$route && curr.$$route.resolve) {
 				// Show a loading message until promises are resolved
 				$rootScope.loadingView = true;
@@ -108,6 +111,7 @@ app.run(['$rootScope', '$templateCache', '$location', '$q', '$timeout', 'notific
 		});
 		$rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
 			// Hide loading message
+			loadingScreenService.hideLoading('mainscreen');
 			$rootScope.loadingView = false;
 			$('#left-panel').panel("close");
 			//checking if the user is allowed.

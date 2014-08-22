@@ -19,6 +19,9 @@ app.factory('serverService', ['$rootScope',
 			server: 'http://local.web/mybookkeeper/server/index.php/provider/',
 			register: 'register',
 			login: 'login',
+			logout: 'logout',
+			updateuser: 'updateUser',
+			updatepassword: 'updatePassword',
 			auth: 'auth'
 		};
 
@@ -61,6 +64,36 @@ app.factory('apiService', ['$rootScope', '$http', 'configRequests', 'serverServi
 			});
 			return promise;
 		};
+		obj.logout = function() {
+			var promise = $http({
+				url: serverService.urls.server + serverService.urls.logout,
+				method: "POST",
+				data: {},
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			});
+			return promise;
+		};
+
+		obj.updateUser = function(user) {
+			var promise = $http({
+				url: serverService.urls.server + serverService.urls.updateuser,
+				method: "POST",
+				data: user,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			});
+			return promise;
+		};
+
+		obj.updatePassword = function(user) {
+			var promise = $http({
+				url: serverService.urls.server + serverService.urls.updatepassword,
+				method: "POST",
+				data: user,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+			});
+			return promise;
+		};
+
 
 		obj.auth = function() {
 			var promise = $http({
@@ -78,26 +111,29 @@ app.factory('apiService', ['$rootScope', '$http', 'configRequests', 'serverServi
 
 
 
-app.service('userService', ['$q', 'apiService', 'serverService', function($q, apiService,serverService) {
+app.service('userService', ['$rootScope', '$q', 'apiService', 'serverService', function($rootScope, $q, apiService, serverService) {
 
 		var obj = {};
 
 		obj.currentUser = {
-			firstname : '',
-			lastname : '',
-			email : '',
-			gender : '',
-			logged : false
+			id_user: '',
+			firstname: '',
+			lastname: '',
+			email: '',
+			gender: '',
+			logged: false
 		};
-		
-		var resetCurrentUser = function(){
+
+		var resetCurrentUser = function() {
+			obj.currentUser.id_user = false;
 			obj.currentUser.firstname = false;
 			obj.currentUser.lastname = false;
 			obj.currentUser.email = false;
 			obj.currentUser.gender = false;
 			obj.currentUser.logged = false;
 		};
-		var setCurrentUser = function(user){
+		var setCurrentUser = function(user) {
+			obj.currentUser.id_user = user.id_user;
 			obj.currentUser.firstname = user.firstname;
 			obj.currentUser.lastname = user.lastname;
 			obj.currentUser.email = user.email;
@@ -106,14 +142,12 @@ app.service('userService', ['$q', 'apiService', 'serverService', function($q, ap
 		};
 
 		obj.authUser = function() {
-			
-//			return false;
+
 			var self = this;
 
 			var deferred = $q.defer();
 			var successCb = function(d) {
 				if (!jQuery.isEmptyObject(d.data.user)) {
-//					console.log('autentificating....');
 					setCurrentUser(d.data.user);
 				} else {
 					resetCurrentUser();
@@ -129,6 +163,15 @@ app.service('userService', ['$q', 'apiService', 'serverService', function($q, ap
 
 		};
 
+		obj.logout = function() {
+			var promise = apiService.logout();
+			promise.then(function(response) {
+				$rootScope.redirect("/");
+			});
+
+			resetCurrentUser();
+		};
+
 		return obj;
 	}]);
 
@@ -139,6 +182,9 @@ app.factory('notificationService', ['$rootScope', '$timeout',
 		var obj = {};
 
 		obj.notification = function(message, type) {
+
+
+			$('#content').scrollTop(0);
 
 			switch (type) {
 				case 'success' :
@@ -174,6 +220,32 @@ app.factory('notificationService', ['$rootScope', '$timeout',
 
 
 		};
+
+		return obj;
+
+	}
+]);
+
+app.factory('loadingScreenService', ['$rootScope',
+	function($rootScope) {
+
+		var obj = {};
+
+		obj.start = false;
+		obj.end = false;
+
+		obj.showLoading = function(loader) {
+			$('#loadingmask').fadeIn()
+			console.log('Showing loading screen - ' + loader);
+			obj.start = new Date().getTime();
+		}
+		obj.hideLoading = function(loader) {
+			$('#loadingmask').fadeOut()
+			console.log('Hiding loading screen - ' + loader);
+			obj.end = new Date().getTime();
+			console.log('Total loading screen : ' + (this.end - this.start) + 'ms.');
+		}
+
 
 		return obj;
 

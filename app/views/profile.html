@@ -1,16 +1,57 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-	<head>
-		<title>TODO supply a title</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width">
-	</head>
-	<body>
-		<div>TODO write content</div>
-	</body>
-</html>
+<table id="register-wrapper">
+	<tr>
+		<td id="register-ctr">
+			<div>
+				<form name="regform">
+					<h3>Profile information</h3>
+						
+					<input type="text" name="firstname" ng-model="user.firstname" placeholder="First Name" required>
+					<!--					<span class="alert-danger" ng-show="regform.firstname.$error.minlength">Minimum length is 2</span>-->
+					<span class="alert-danger" ng-show="regform.firstname.$error.required">Please fill out your first name</span>
+
+					<input type="text" name="lastname" ng-model="user.lastname" placeholder="Last Name" required>
+					<span class="alert-danger" ng-show="regform.lastname.$error.required">Please fill out your last name</span>
+					
+					<select ng-model="user.gender" ng-selected="1" ng-options="gender.name as gender.name for gender in genders" required></select>
+
+					<input type="email" name="email" ng-model="user.email" placeholder="Email" required>
+					<span class="alert-danger" ng-show="regform.email.$error.email">This is not valid email!</span>
+					<span class="alert-danger" ng-show="regform.email.$error.required">This field is required.</span>
+
+<!--					<input ng-model="user.password" type="password" name="password" data-ng-class="{'ng-invalid':regform.confirmPassword.$error.match}" placeholder="Password" ng-minlength="6" required="" />
+					<span class="alert-danger" ng-show="regform.password.$error.required">This field is required.</span>
+					<span class="alert-danger" ng-show="regform.password.$error.minlength">Minimum length is 6.</span>
+
+					<input ng-model="user.passwordConfirm" type="password" data-match="user.password" name="confirmPassword" placeholder="Confirm password" required="" />
+
+					<span class="alert-danger" data-ng-show="regform.confirmPassword.$error.match">Passwords do not match!</span>
+					<span class="alert-danger" ng-show="regform.confirm_password.$error.required">This field is required.</span>-->
+
+					<!--<input type="checkbox" name="remember"><span>Remember me</span>-->
+
+					<input type="submit" value="Save" ng-disabled="regform.$invalid" ng-click="save()">
+				</form>
+				<p ng-show="false" class="error font-12">There was an error.</p>
+			</div>	
+			<div class="padd5"></div>		
+			<div>	
+				<form name="changepassword">
+					<h3>Change password</h3>
+					<input ng-model="user.oldpassword" type="password" name="oldpassword" placeholder="Old password" ng-minlength="6" required="" />
+					<span class="alert-danger" ng-show="changepassword.oldpassword.$error.required">This field is required.</span>
+					<span class="alert-danger" ng-show="changepassword.oldpassword.$error.minlength">Minimum length is 6.</span>
+					
+					<input ng-model="user.password" type="password" name="password" data-ng-class="{'ng-invalid':changepassword.confirmPassword.$error.match}" placeholder="New password" ng-minlength="6" required="" />
+					<span class="alert-danger" ng-show="changepassword.password.$error.required">This field is required.</span>
+					<span class="alert-danger" ng-show="changepassword.password.$error.minlength">Minimum length is 6.</span>
+
+					<input ng-model="user.passwordConfirm" type="password" data-match="user.password" name="confirmPassword" placeholder="Confirm new password" required="" />
+
+					<span class="alert-danger" data-ng-show="changepassword.confirmPassword.$error.match">Passwords do not match!</span>
+					<span class="alert-danger" ng-show="changepassword.confirm_password.$error.required">This field is required.</span>
+					<input type="submit" value="Save" ng-disabled="changepassword.$invalid" ng-click="saveNewPassword()">
+				</form>
+			</div>
+		</td>
+	</tr>
+</table>
