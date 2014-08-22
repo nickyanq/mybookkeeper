@@ -46,7 +46,7 @@ app.config(function($routeProvider, $locationProvider, $provide, $httpProvider) 
 				}
 			})
 			.when('/profile', {
-				templateUrl: 'app/views/login.html',
+				templateUrl: 'app/views/profile.html',
 				controller: 'profileController',
 				requireLogin: true,
 				forbidLogged: false,
@@ -133,7 +133,6 @@ app.run(['$rootScope', '$templateCache', '$location', '$q', '$timeout', 'notific
 		});
 
 		$rootScope.redirect = function(url) {
-			alert('redirect');
 			$location.path(url);
 		};
 

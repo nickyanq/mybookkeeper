@@ -122,3 +122,14 @@ app.controller(
 				};
 			}
 		]);
+
+app.controller(
+		'profileController',
+		['$scope', '$rootScope','userService',
+			function($scope, $rootScope,userService) {
+//				console.log('home controller');
+
+
+
+			}
+		]);

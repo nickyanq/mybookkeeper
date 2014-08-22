@@ -1,10 +1,14 @@
-app.directive('menu', ['userService', function(userService) {
+app.directive('menu', ['userService','$rootScope', function(userService,$rootScope) {
 		return {
 			restrict: 'E',
 			templateUrl: 'app/templates/menu.html',
 			scope: {},
 			link: function(scope, element, attrs) {
 				scope.userService = userService;
+				
+				scope.redirect = function(url){
+					$rootScope.redirect(url)
+				}
 			}
 
 		};
