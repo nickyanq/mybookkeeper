@@ -44,6 +44,10 @@
 	border: 0;
 	box-shadow: none !important;
 }
+
+.padd15{
+	padding: 15px;
+}
 /*
 	END BOOLSHIT
 */
@@ -336,6 +340,7 @@ body{
 .ma-label{
 	text-transform: uppercase;
 	text-shadow: none;
+	z-index: 1;
 	position: absolute;
 	top: 0;
 	left: 15px;
@@ -359,3 +364,24 @@ body{
 .overall-currency{
 	text-align: center;
 }
+
+
+#lastTenEntries{
+	list-style: none;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+#lastTenEntries > li{
+	padding: 5px 0 5px 0;
+	border-bottom: 1px solid lightgray;
+}
+
+#lastTenEntries > li > table{
+	width: 100%;
+}
+
+#lastTenEntries > li > table tr .second{width: 60%;padding-left: 10px;}
+#lastTenEntries > li > table tr:first-child .second{width: 60%;padding-left: 10px;font-weight: bold;}
+#lastTenEntries > li > table tr .third{width: 30%;}
+#lastTenEntries > li > table tr .first{text-align: center;vertical-align: middle;}

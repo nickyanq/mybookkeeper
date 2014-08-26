@@ -28,6 +28,12 @@
 		<script src="vendor/angular.js"></script>
 		<script src="vendor/angular-route.js"></script>
 		<script src="vendor/angular-cookies.js"></script>
+		
+		<!-- CHART DEPENDECIES -->
+		<script src="vendor/d3.js"></script>
+		<script src="vendor/nv.d3.js"></script>
+		
+		<script src="http://bouil.github.io/angular-google-chart/ng-google-chart.js"></script>
 
 		<script src="app/app.js"></script>
 
@@ -36,10 +42,12 @@
 		<script src="app/services/services.js"></script>
 
 		<script src="app/directives/directives.js"></script>
+		<script src="app/directives/angularjs-nvd3-directives.js"></script>
 
 		<script src="app/filters/filters.js"></script>
 
 		<link href="css/main.mybookkeeper.css" rel="stylesheet" type="text/css" />
+		<link href="css/nv.d3.css" rel="stylesheet" type="text/css" />
 
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,7 +67,7 @@
 			<menu></menu>
 		</div>
 
-		<div id="all-wrapper">
+		<div id="all-wrapper" ng-controller="mainController">
 
 			<div id="header">
 				<table>
@@ -85,9 +93,9 @@
 				<div ng-view id="view-holder">
 
 				</div>
-
+				
 			</div>
-
+				
 			<div id="footer">
 				<table>
 					<tr>
@@ -100,5 +108,8 @@
 
 		</div>
 
+		
+		
+		
 	</body>
 </html>
