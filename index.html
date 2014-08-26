@@ -24,15 +24,15 @@
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 		<!-- PT Sans Narrow -->
 		<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
-		
+
 		<script src="vendor/angular.js"></script>
 		<script src="vendor/angular-route.js"></script>
 		<script src="vendor/angular-cookies.js"></script>
-		
+
 		<!-- CHART DEPENDECIES -->
 		<script src="vendor/d3.js"></script>
 		<script src="vendor/nv.d3.js"></script>
-		
+
 		<script src="http://bouil.github.io/angular-google-chart/ng-google-chart.js"></script>
 
 		<script src="app/app.js"></script>
@@ -69,7 +69,7 @@
 
 		<div id="all-wrapper" ng-controller="mainController">
 
-			<div id="header">
+			<div id="header" ng-controller="headerController">
 				<table>
 					<tr>
 						<td>
@@ -78,7 +78,7 @@
 						<td ng-click="redirect('/')">
 							<h3>My Bookkeeper</h3>
 						</td>
-						<td>
+						<td ng-click="accountsService.toggle();">
 							<a href="" onclick="return false;"><i class="fa fa-user fa-big"></i></a>
 						</td>
 					</tr>
@@ -86,16 +86,35 @@
 
 			</div>
 
+			<div style="" id="accounts">
+				<div id="accountsOverflow">
+					<ul>
+						<li class="noShadow">
+							Main account
+						</li>
+						<li>
+							Raiffaisen
+						</li>
+						<li>
+							BCR
+						</li>
+					</ul>
+				</div>
+
+
+			</div>
+
+
 			<div id="content">
 				<div id="notificatin-holder">
-					
+
 				</div>
 				<div ng-view id="view-holder">
 
 				</div>
-				
+
 			</div>
-				
+
 			<div id="footer">
 				<table>
 					<tr>
@@ -108,8 +127,8 @@
 
 		</div>
 
-		
-		
-		
+
+
+
 	</body>
 </html>

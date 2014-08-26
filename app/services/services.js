@@ -30,6 +30,29 @@ app.factory('serverService', ['$rootScope',
 
 	}
 ]);
+app.factory('accountsService', [
+	function() {
+
+		var obj = {};
+
+		obj.displayed = false;
+
+		obj.toggle = function() {
+			if (this.displayed) {
+				$('#accounts').slideUp();
+				this.displayed = false;
+			} else {
+				$('#accounts').slideDown();
+				this.displayed = true;
+			}
+
+		}
+
+		return obj;
+
+
+	}
+]);
 
 app.factory('apiService', ['$rootScope', '$http', 'configRequests', 'serverService',
 	function($rootScope, $http, configRequests, serverService) {

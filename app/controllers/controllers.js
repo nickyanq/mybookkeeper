@@ -89,6 +89,16 @@ app.controller(
 
 			}
 		]);
+		
+app.controller(
+		'headerController',
+		['$scope', '$rootScope', 'accountsService',
+			function($scope, $rootScope, accountsService) {
+				
+				$scope.accountsService = accountsService;
+			
+			}
+		]);
 
 app.controller(
 		'loginController',
